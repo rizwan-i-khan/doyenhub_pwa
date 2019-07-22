@@ -1,8 +1,7 @@
-# Simple PWA example 
+# Simple PWA example For Doyenhub News Module 
 
-Online demo can be found on https://marcushellberg.github.io/alternative-news
+Online demo can be found on https://rizwan-i-khan.github.io/doyenhub_pwa/
 
-## Running locally
+Basic PWA application to show news from newsapi.
 
-Serve folder with your server of choice. For instance `npm install -g serve`.
-
+Consist of service workers and manifest.json file.
