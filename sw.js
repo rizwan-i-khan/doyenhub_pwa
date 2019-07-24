@@ -15,10 +15,6 @@ self.addEventListener('install', async function () {
     cache.addAll(staticAssets);
 });
 
-self.addEventListener('activate', event => {
-    event.waitUntil(self.clients.claim());
-});
-
 /* Fetch Events:  */
 self.addEventListener('fetch', event => {
     const request = event.request;
