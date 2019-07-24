@@ -1,5 +1,3 @@
-const cacheName = 'news-v1';
-
 /* Static contents to be cached */
 const staticAssets = [
   './',
@@ -11,7 +9,7 @@ const staticAssets = [
 
 /* sw register for first time, load all static assets into news-v1 cache. */
 self.addEventListener('install', async function () {
-    const cache = await caches.open(cacheName);
+    const cache = await caches.open("news-v1");
     cache.addAll(staticAssets);
 });
 
