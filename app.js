@@ -3,6 +3,8 @@ const defaultSource = 'abc-news';
 const sourceSelector = document.querySelector('#sources');
 const newsArticles = document.querySelector('main');
 
+
+/* Register service workers in navigator object. */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () =>
     navigator.serviceWorker.register('sw.js')
@@ -10,6 +12,7 @@ if ('serviceWorker' in navigator) {
       .catch(err => 'SW registration failed'));
 }
 
+/* Load initial load of document and render news */
 window.addEventListener('load', e => {
   sourceSelector.addEventListener('change', evt => updateNews(evt.target.value));
   updateNewsSources().then(() => {
@@ -20,6 +23,7 @@ window.addEventListener('load', e => {
 
 window.addEventListener('online', () => updateNews(sourceSelector.value));
 
+/* Fill dropdown with Diffrent news sources. */
 async function updateNewsSources() {
   const response = await fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`);
   const json = await response.json();
@@ -29,6 +33,7 @@ async function updateNewsSources() {
       .join('\n');
 }
 
+/* update or create new news artical page and render all elements. */
 async function updateNews(source = defaultSource) {
   newsArticles.innerHTML = '';
   const response = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&sortBy=top&apiKey=${apiKey}`);

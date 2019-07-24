@@ -1,7 +1,7 @@
 {
   "articles": [
     {
-      "title": "Dog fails to fetch articles, finds ball",
+      "title": "Failed to fetch articles, please try again.",
       "url": "",
       "urlToImage": "images/fetch-dog.jpg",
       "description": "Try loading the page again when you're online."

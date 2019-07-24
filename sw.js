@@ -1,5 +1,6 @@
 const cacheName = 'news-v1';
 
+/* Static contents to be cached */
 const staticAssets = [
   './',
   './app.js',
@@ -8,6 +9,7 @@ const staticAssets = [
   './images/fetch-dog.jpg'
 ];
 
+/* sw register for first time, load all static assets into news-v1 cache. */
 self.addEventListener('install', async function () {
     const cache = await caches.open(cacheName);
     cache.addAll(staticAssets);
@@ -17,6 +19,7 @@ self.addEventListener('activate', event => {
     event.waitUntil(self.clients.claim());
 });
 
+/* Fetch Events:  */
 self.addEventListener('fetch', event => {
     const request = event.request;
     const url = new URL(request.url);
@@ -27,11 +30,14 @@ self.addEventListener('fetch', event => {
     }
 });
 
+
+/* called for cache first */
 async function cacheFirst(request) {
     const cachedResponse = await caches.match(request);
     return cachedResponse || fetch(request);
 }
 
+/* called for network first */
 async function networkFirst(request) {
     const dynamicCache = await caches.open('news-dynamic');
     try {
