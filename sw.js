@@ -6,7 +6,7 @@ const staticAssets = [
   './app.js',
   './styles.css',
   './fallback.json',
-  './images/fetch-dog.jpg'
+  './images/offline.jpg'
 ];
 
 /* sw register for first time, load all static assets into news-v1 cache. */
