@@ -24,7 +24,6 @@ self.addEventListener('fetch', event => {
     }
 });
 
-
 /* called for cache first */
 async function cacheFirst(request) {
     const cachedResponse = await caches.match(request);
